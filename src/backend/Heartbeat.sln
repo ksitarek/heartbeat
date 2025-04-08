@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heartbeat.API", "Heartbeat.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heartbeat.Tests", "Heartbeat.Tests\Heartbeat.Tests.csproj", "{89598A43-6F8B-4209-BDDB-DE4239DA7CFC}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "..\..\build\_build.csproj", "{7E3BED83-6353-4648-B93A-B2C5B3D92408}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,6 +20,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7E3BED83-6353-4648-B93A-B2C5B3D92408}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E3BED83-6353-4648-B93A-B2C5B3D92408}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D87760B-EC88-45CF-9FF3-EAA630C40503}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7D87760B-EC88-45CF-9FF3-EAA630C40503}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D87760B-EC88-45CF-9FF3-EAA630C40503}.Release|Any CPU.ActiveCfg = Release|Any CPU
