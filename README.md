@@ -6,6 +6,6 @@ Heartbeat is a simple application to check if your applications are alive and ru
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/yourusername/heartbeat.git
+    git clone https://github.com/ksitarek/heartbeat.git
     cd heartbeat
     ```
