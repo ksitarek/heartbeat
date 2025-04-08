@@ -9,3 +9,8 @@ Heartbeat is a simple application to check if your applications are alive and ru
     git clone https://github.com/ksitarek/heartbeat.git
     cd heartbeat
     ```
+
+2. **Compile**:
+    ```bash
+   nuke Compile
+   ```
