@@ -4,9 +4,9 @@ public class VerificationStatus
 {
     public required Guid Id { get; set; } = Guid.NewGuid();
 
-    public required Guid WebAppId { get; set; }
+    public required Guid AppId { get; set; }
 
-    public virtual WebApp WebApp { get; set; } = null!;
+    public virtual App App { get; set; } = null!;
 
     public required DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
 

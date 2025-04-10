@@ -3,7 +3,7 @@ using Heartbeat.Domain.Verification;
 
 namespace Heartbeat.Domain;
 
-public class WebApp
+public class App
 {
     public required Guid Id { get; set; } = Guid.NewGuid();
 

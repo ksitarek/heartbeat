@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heartbeat.Tests", "Heartbea
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "..\..\build\_build.csproj", "{7E3BED83-6353-4648-B93A-B2C5B3D92408}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heartbeat.Application", "Heartbeat.Application\Heartbeat.Application.csproj", "{0B614191-0C0A-4499-BCBF-D797284E4CD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heartbeat.Database", "Heartbeat.Database\Heartbeat.Database.csproj", "{AA2E088B-7EF8-4D36-9FEF-79C9792776E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,5 +38,13 @@ Global
 		{89598A43-6F8B-4209-BDDB-DE4239DA7CFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89598A43-6F8B-4209-BDDB-DE4239DA7CFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89598A43-6F8B-4209-BDDB-DE4239DA7CFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B614191-0C0A-4499-BCBF-D797284E4CD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B614191-0C0A-4499-BCBF-D797284E4CD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B614191-0C0A-4499-BCBF-D797284E4CD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B614191-0C0A-4499-BCBF-D797284E4CD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA2E088B-7EF8-4D36-9FEF-79C9792776E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA2E088B-7EF8-4D36-9FEF-79C9792776E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA2E088B-7EF8-4D36-9FEF-79C9792776E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA2E088B-7EF8-4D36-9FEF-79C9792776E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
