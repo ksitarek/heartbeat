@@ -44,5 +44,5 @@ partial class Build
 
             await PostgresHelpers.WaitForPostgresDb(PostgresContainerName, connectionString);
         })
-        .Triggers(MigrateAllDatabases);
+        .Triggers(MigrateDatabase);
 }

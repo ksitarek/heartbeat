@@ -8,6 +8,6 @@ internal class ConnectionStringProvider : IConnectionStringProvider
 
     public ConnectionStringProvider(IConfiguration configuration) => _configuration = configuration;
 
-    public string? GetConnectionString(string companyId) =>
-        _configuration[$"Companies:{companyId}:Npgsql:ConnectionString"];
+    public string? GetConnectionString() =>
+        _configuration["Npgsql:ConnectionString"];
 }

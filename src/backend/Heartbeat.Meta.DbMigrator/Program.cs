@@ -25,17 +25,8 @@ builder.Services.AddSingleton<IDatabaseMigrator, DbMigrator>();
 
 var app = builder.Build();
 
-app.AddCommand("migrate", (string clientId, IDatabaseMigrator migrator) => migrator.Migrate(clientId));
+app.AddCommand("migrate", (IDatabaseMigrator migrator) => migrator.Migrate());
 
-app.AddCommand("migrate-all-clients",
-               (ICompaniesProvider companiesProvider, IDatabaseMigrator migrator) =>
-               {
-                   foreach (var companyId in companiesProvider.GetCompanies())
-                   {
-                       migrator.Migrate(companyId);
-                   }
-               });
-
-app.AddCommand("load-test-data", (string clientId, IDatabaseMigrator migrator) => migrator.LoadTestData(clientId));
+app.AddCommand("load-test-data", (IDatabaseMigrator migrator) => migrator.LoadTestData());
 
 await app.RunAsync();

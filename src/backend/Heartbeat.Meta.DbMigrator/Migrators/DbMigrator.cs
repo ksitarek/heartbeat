@@ -20,11 +20,11 @@ internal class DbMigrator : IDatabaseMigrator
         _connectionStringProvider = connectionStringProvider;
     }
 
-    public void Migrate(string companyId)
+    public void Migrate()
     {
-        _logger.LogInformation("Migrating database {CompanyId}", companyId);
+        _logger.LogInformation("Migrating database");
 
-        var connectionString = _connectionStringProvider.GetConnectionString(companyId);
+        var connectionString = _connectionStringProvider.GetConnectionString();
 
         EnsureDatabase.For.PostgresqlDatabase(connectionString);
 
@@ -46,9 +46,9 @@ internal class DbMigrator : IDatabaseMigrator
         }
     }
 
-    public void LoadTestData(string companyId)
+    public void LoadTestData()
     {
-        var connectionString = _connectionStringProvider.GetConnectionString(companyId);
+        var connectionString = _connectionStringProvider.GetConnectionString();
 
         var result = DeployChanges.To
             .PostgresqlDatabase(connectionString)
@@ -61,11 +61,11 @@ internal class DbMigrator : IDatabaseMigrator
 
         if (!result.Successful)
         {
-            _logger.LogError("Failed to load sample data to {db} database.", companyId);
+            _logger.LogError("Failed to load sample data to database.");
         }
         else
         {
-            _logger.LogInformation("Sample data loaded to {db} database.", companyId);
+            _logger.LogInformation("Sample data loaded to database.");
         }
     }
 }
