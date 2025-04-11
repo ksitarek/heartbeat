@@ -1,8 +1,11 @@
 using Heartbeat.Application;
+using Heartbeat.Database.Read;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
+
+builder.Services.AddReadLayer(builder.Configuration);
 
 builder.Services.AddRequestHandlers();
 

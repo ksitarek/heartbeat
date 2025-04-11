@@ -1,6 +1,5 @@
 using System.Reflection;
 using DbUp;
-using DbUp.Engine;
 using DbUp.Helpers;
 using Heartbeat.Meta.DbMigrator.Providers;
 using Microsoft.Extensions.Logging;

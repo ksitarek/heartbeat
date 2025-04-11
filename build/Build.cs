@@ -1,7 +1,5 @@
 using Nuke.Common;
-using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
-using Nuke.Common.Tools.DotNet;
 
 partial class Build : NukeBuild
 {

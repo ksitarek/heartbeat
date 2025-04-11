@@ -1,4 +1,3 @@
-using System.Reflection.Metadata;
 using Helpers;
 using Nuke.Common;
 using Nuke.Common.IO;
