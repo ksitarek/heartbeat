@@ -1,6 +1,6 @@
 using Dapper;
 
-namespace Heartbeat.Database.Read.Apps;
+namespace Heartbeat.Database.Read.Apps.ListApps;
 
 internal class ListAppsQuery : Query, IListAppsQuery
 {
@@ -10,7 +10,7 @@ internal class ListAppsQuery : Query, IListAppsQuery
 
     public async Task<List<object>> ExecuteAsync(CancellationToken cancellationToken)
     {
-        var sqlQuery = GetQuery("ListApps.sql");
+        var sqlQuery = SqlQueryCache.Get("ListApps.sql");
 
         var cmd = new CommandDefinition(sqlQuery, cancellationToken: cancellationToken);
 

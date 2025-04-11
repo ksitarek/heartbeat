@@ -1,4 +1,3 @@
-using Heartbeat.Database.Read.Apps;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -17,10 +16,10 @@ public static class ReadLayerExtensions
 
         return services.AddSingleton(connectionString)
             .AddTransient<SqlConnection>()
-            .AddQueries();
+            .AddQueryClasses();
     }
 
-    private static IServiceCollection AddQueries(this IServiceCollection services)
+    private static IServiceCollection AddQueryClasses(this IServiceCollection services)
     {
         var assembly = typeof(ReadLayerExtensions).Assembly;
 
@@ -35,6 +34,8 @@ public static class ReadLayerExtensions
                         ServiceLifetime.Transient));
 
         services.TryAddEnumerable(serviceDescriptors);
+
+        SqlQueryCache.Load();
 
         return services;
     }

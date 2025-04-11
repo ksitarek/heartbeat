@@ -1,4 +1,4 @@
-namespace Heartbeat.Database.Read.Apps;
+namespace Heartbeat.Database.Read;
 
 public interface IQuery : IAsyncDisposable
 {

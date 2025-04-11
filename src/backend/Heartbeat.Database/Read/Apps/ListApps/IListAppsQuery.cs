@@ -1,4 +1,4 @@
-namespace Heartbeat.Database.Read.Apps;
+namespace Heartbeat.Database.Read.Apps.ListApps;
 
 public interface IListAppsQuery : IQuery
 {
