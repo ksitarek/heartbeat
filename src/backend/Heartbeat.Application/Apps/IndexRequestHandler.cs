@@ -12,8 +12,8 @@ public class IndexRequestHandler : IRequestHandler
         _context = context;
     }
 
-    public async Task<IResult> HandleAsync(CancellationToken cancellationToken)
+    public Task<IResult> HandleAsync(CancellationToken cancellationToken)
     {
-        return Results.Ok();
+        return Task.FromResult(Results.Ok());
     }
 }

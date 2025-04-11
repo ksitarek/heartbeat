@@ -139,4 +139,5 @@ _NCrunch*
 .nuke
 .docker
 
-node_modules
+node_modules/
+volumes/
