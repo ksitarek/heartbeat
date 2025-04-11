@@ -7,4 +7,6 @@ public class CheckResponse
     public required bool ResponseCollected { get; set; }
 
     public required string? Response { get; set; }
+
+    public required string Checksum { get; set; }
 }
