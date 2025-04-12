@@ -7,17 +7,17 @@ using Serilog;
 partial class Build
 {
     [Parameter("Output directory - Default is 'out'")] public static readonly AbsolutePath OutputDirectory = RootDirectory / "out";
-    
+
     [Parameter("DotNetVerbosity")] readonly DotNetVerbosity DotNetVerbosity = DotNetVerbosity.minimal;
-    
+
     readonly AbsolutePath APIDll = OutputDirectory / "Heartbeat.API.dll";
-    
+
     Target Clean => _ => _
         .Executes(() =>
         {
             OutputDirectory.DeleteDirectory();
             Log.Information("Deleted output directory: {OutputDirectory}", OutputDirectory);
-            
+
             RootDirectory.GlobDirectories("**/bin", "**/obj")
                 .ForEach(d =>
                 {

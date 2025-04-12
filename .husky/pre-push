@@ -1,7 +1,5 @@
-cd src/backend
+dotnet format --verify-no-changes src/backend/Heartbeat.sln
 
-nuke Compile
-
-cd ../../src/frontend
+cd src/frontend
 
 npm run build

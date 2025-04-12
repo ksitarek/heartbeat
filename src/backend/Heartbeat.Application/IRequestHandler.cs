@@ -1,3 +1,3 @@
 namespace Heartbeat.Application;
 
-internal interface IRequestHandler {}
+internal interface IRequestHandler { }

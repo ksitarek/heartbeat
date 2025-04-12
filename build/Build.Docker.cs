@@ -6,7 +6,7 @@ using Nuke.Common.Tools.Docker;
 partial class Build
 {
     [Parameter] readonly AbsolutePath VolumesDirectory = RootDirectory / "volumes";
-    
+
     [Parameter] readonly string PostgresContainerName = "Heartbeat-Postgres";
 
     [Parameter] readonly string PostgresImage = "postgres:17";
