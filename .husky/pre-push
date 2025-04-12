@@ -1,0 +1,7 @@
+cd src/backend
+
+nuke Compile
+
+cd ../../src/frontend
+
+npm run build
