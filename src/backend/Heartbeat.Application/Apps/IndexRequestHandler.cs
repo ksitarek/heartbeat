@@ -1,5 +1,5 @@
 using Heartbeat.Database;
-using Heartbeat.Database.Read.Apps.ListApps;
+using Heartbeat.Database.Read.Queries.Apps.ListApps;
 using Microsoft.AspNetCore.Http;
 
 namespace Heartbeat.Application.Apps;

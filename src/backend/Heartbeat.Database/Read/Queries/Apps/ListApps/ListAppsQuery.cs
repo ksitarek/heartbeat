@@ -1,6 +1,7 @@
 using Dapper;
+using Heartbeat.Database.Read.Connection;
 
-namespace Heartbeat.Database.Read.Apps.ListApps;
+namespace Heartbeat.Database.Read.Queries.Apps.ListApps;
 
 internal class ListAppsQuery : Query, IListAppsQuery
 {

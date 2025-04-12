@@ -1,8 +1,10 @@
+using Heartbeat.Database.Read.Queries;
+using Heartbeat.Database.Read.Queries.Apps;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace Heartbeat.Database.Read;
+namespace Heartbeat.Database.Read.Connection;
 
 public static class ReadLayerExtensions
 {

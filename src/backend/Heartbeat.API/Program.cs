@@ -1,5 +1,6 @@
 using Heartbeat.Application;
 using Heartbeat.Database.Read;
+using Heartbeat.Database.Read.Connection;
 
 var builder = WebApplication.CreateBuilder(args);
 

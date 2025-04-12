@@ -1,6 +1,6 @@
 using Npgsql;
 
-namespace Heartbeat.Database.Read;
+namespace Heartbeat.Database.Read.Connection;
 
 internal class SqlConnection : IAsyncDisposable
 {

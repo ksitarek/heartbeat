@@ -1,7 +1,7 @@
 using System.Collections.ObjectModel;
 using System.Reflection;
 
-namespace Heartbeat.Database.Read;
+namespace Heartbeat.Database.Read.Queries;
 
 internal static class SqlQueryCache
 {

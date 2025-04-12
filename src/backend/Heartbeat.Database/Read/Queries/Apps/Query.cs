@@ -1,7 +1,7 @@
-using System.Reflection;
+using Heartbeat.Database.Read.Connection;
 using Npgsql;
 
-namespace Heartbeat.Database.Read;
+namespace Heartbeat.Database.Read.Queries.Apps;
 
 internal abstract class Query : IAsyncDisposable
 {
