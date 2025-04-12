@@ -1,11 +1,11 @@
-SELECT a."id"                           AS app_id,
-       a."label"                        AS app_label,
+SELECT a."id"                           AS AppId,
+       a."label"                        AS AppLabel,
 
-       lc."status"                      AS last_check_status,
-       lc."created_at"                  AS last_check_time,
+       lc."status"                      AS LastCheckStatus,
+       lc."created_at"                  AS LastCheckDateTime,
 
-       lv."was_verification_successful" AS last_verification_success,
-       lv."created_at"                  AS last_verification_time
+       lv."was_verification_successful" AS LastVerificationStatus,
+       lv."created_at"                  AS LastVerificationDateTime
 
 FROM "app" a
 

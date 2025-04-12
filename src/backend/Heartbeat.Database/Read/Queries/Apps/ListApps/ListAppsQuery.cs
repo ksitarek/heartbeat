@@ -9,12 +9,12 @@ internal class ListAppsQuery : Query, IListAppsQuery
     {
     }
 
-    public async Task<List<object>> ExecuteAsync(CancellationToken cancellationToken)
+    public async Task<List<AppsListItem>> ExecuteAsync(CancellationToken cancellationToken)
     {
         var sqlQuery = SqlQueryCache.Get("ListApps.sql");
 
         var cmd = new CommandDefinition(sqlQuery, cancellationToken: cancellationToken);
 
-        return (await Connection.QueryAsync(cmd)).ToList();
+        return (await Connection.QueryAsync<AppsListItem>(cmd)).ToList();
     }
 }
