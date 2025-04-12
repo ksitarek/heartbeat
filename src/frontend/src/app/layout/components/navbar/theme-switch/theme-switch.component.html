@@ -1,0 +1,31 @@
+<brn-toggle-group hlm multiple="false" nullable="true" size="sm">
+  <button
+    aria-label="System"
+    value="system"
+    hlmToggleGroupItem
+    class="cursor-pointer"
+    (click)="setMode(Theme.System)"
+  >
+    <ng-icon name="lucideLaptop" />
+  </button>
+
+  <button
+    aria-label="Light"
+    value="light"
+    hlmToggleGroupItem
+    class="cursor-pointer"
+    (click)="setMode(Theme.Light)"
+  >
+    <ng-icon name="lucideSun" />
+  </button>
+
+  <button
+    aria-label="Dark"
+    value="dark"
+    hlmToggleGroupItem
+    class="cursor-pointer"
+    (click)="setMode(Theme.Dark)"
+  >
+    <ng-icon name="lucideMoon" />
+  </button>
+</brn-toggle-group>

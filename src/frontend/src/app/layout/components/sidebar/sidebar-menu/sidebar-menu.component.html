@@ -1,0 +1,7 @@
+<ul class="flex flex-col w-full">
+  @for(item of menuItems; track item.title){
+  <li class="items-center w-full">
+    <hb-sidebar-menu-item [item]="item" />
+  </li>
+  }
+</ul>

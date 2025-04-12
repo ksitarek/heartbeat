@@ -1,0 +1,21 @@
+@if(expandSidebar) {
+<a
+  [routerLink]="route()"
+  routerLinkActive="active"
+  class="flex items-center px-4 py-2 text-sm rounded-lg hover:bg-primary-foreground"
+>
+  <ng-icon [name]="icon()" />
+  <span class="ml-3">{{ title() }}</span>
+</a>
+} @else {
+<a
+  [routerLink]="route()"
+  routerLinkActive="active"
+  hlmBtn
+  variant="ghost"
+  size="default"
+  class="w-full"
+>
+  <ng-icon [name]="icon()" />
+</a>
+}
