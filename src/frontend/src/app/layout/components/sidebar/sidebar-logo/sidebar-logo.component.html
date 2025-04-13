@@ -1,11 +1,7 @@
-<div [ngClass]="sidebarLogoClasses" class="mx-4 mb-2 flex h-9 items-center">
+<div [ngClass]="sidebarLogoClasses" class="flex items-center mx-4 mb-2 h-9">
   <div class="flex items-center">
     <h1 class="text-3xl text-nowrap">
-      🫀<span
-        [ngClass]="expandSidebar ? '' : 'hidden'"
-        class="transition-all duration-300"
-        >hb^</span
-      >
+      🫀<span [ngClass]="expandSidebar ? '' : 'hidden'">hb^</span>
     </h1>
   </div>
 </div>
