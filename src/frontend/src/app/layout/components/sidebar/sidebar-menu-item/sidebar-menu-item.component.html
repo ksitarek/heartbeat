@@ -5,7 +5,7 @@
   class="flex items-center px-4 py-2 text-sm font-medium rounded-lg hover:bg-primary-foreground"
 >
   <ng-icon [name]="icon()" />
-  <span class="ml-3">{{ title() }}</span>
+  <span class="ml-3">{{ title() | translate }}</span>
 </a>
 } @else {
 <a

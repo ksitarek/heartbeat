@@ -17,7 +17,8 @@
       class="cursor-pointer"
     >
       @if(expandSidebar) {
-      <ng-icon name="lucideChevronsLeft" /> Collapse } @else {
+      <ng-icon name="lucideChevronsLeft" />
+      {{ "layout.collapse" | translate }} } @else {
       <ng-icon name="lucideChevronsRight" />
       }
     </button>

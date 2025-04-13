@@ -23,7 +23,11 @@ export class SidebarMenuComponent {
   }
 
   public readonly menuItems: SidebarMenuItem[] = [
-    { title: 'Dashboard', icon: 'lucideHouse', route: '/dashboard' },
-    { title: 'Apps', icon: 'lucideCloudCog', route: '/apps' },
+    {
+      title: 'layout.sidebar.dashboard',
+      icon: 'lucideHouse',
+      route: '/dashboard',
+    },
+    { title: 'layout.sidebar.apps', icon: 'lucideCloudCog', route: '/apps' },
   ];
 }
