@@ -1,25 +1,25 @@
 <nav
   [ngClass]="sidebarClasses"
-  class="flex-col justify-between h-full pt-3 bg-background lg:fles"
+  class="flex flex-col justify-between h-full pt-3 bg-background lg:fles"
 >
   <div class="overflow-hidden">
     <hb-sidebar-logo />
 
     <hb-sidebar-menu />
+  </div>
 
-    <div class="text-center">
-      <button
-        hlmBtn
-        size="sm"
-        variant="ghost"
-        (click)="toggleSidebar()"
-        class="cursor-pointer"
-      >
-        @if(expandSidebar) {
-        <ng-icon name="lucideChevronsLeft" /> Collapse } @else {
-        <ng-icon name="lucideChevronsRight" />
-        }
-      </button>
-    </div>
+  <div class="mb-10 text-center">
+    <button
+      hlmBtn
+      size="sm"
+      variant="ghost"
+      (click)="toggleSidebar()"
+      class="cursor-pointer"
+    >
+      @if(expandSidebar) {
+      <ng-icon name="lucideChevronsLeft" /> Collapse } @else {
+      <ng-icon name="lucideChevronsRight" />
+      }
+    </button>
   </div>
 </nav>
