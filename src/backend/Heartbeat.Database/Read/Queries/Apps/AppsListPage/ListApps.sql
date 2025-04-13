@@ -29,3 +29,6 @@ FROM "app" a
     ORDER BY "created_at" DESC
     LIMIT 1
     ) lv ON TRUE
+
+LIMIT @Limit
+OFFSET @Offset

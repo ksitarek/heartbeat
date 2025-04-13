@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Http;
 
 namespace Heartbeat.Application.Apps;
 
+public record IndexRequest(int PageSize, long CurrentPage);
+
 public class IndexRequestHandler : IRequestHandler
 {
     private readonly IAppsListPageQuery _appsListPageQuery;
@@ -12,9 +14,12 @@ public class IndexRequestHandler : IRequestHandler
         _appsListPageQuery = appsListPageQuery;
     }
 
-    public async Task<IResult> HandleAsync(CancellationToken cancellationToken)
+    public async Task<IResult> HandleAsync(IndexRequest request, CancellationToken cancellationToken)
     {
-        var result = await _appsListPageQuery.ExecuteAsync(cancellationToken);
+        var result = await _appsListPageQuery.ExecuteAsync(
+            request.PageSize,
+            request.CurrentPage,
+            cancellationToken);
 
         return Results.Ok(result);
     }
