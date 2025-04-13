@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
-import { catchError, map, Observable, of } from 'rxjs';
+import { catchError, map, Observable } from 'rxjs';
 import { API_URL } from '../../../app.config';
+import { ErrorHandlerService } from '../../../layout/services/error-handler.service';
 import { AppListResponse } from './models/app-list-response';
 
 @Injectable({
@@ -11,6 +12,7 @@ import { AppListResponse } from './models/app-list-response';
 export class AppsListService {
   #apiUrl = inject(API_URL);
   #http = inject(HttpClient);
+  #errorHandler = inject(ErrorHandlerService);
   #reload = signal(1);
 
   #url = computed(
@@ -38,13 +40,7 @@ export class AppsListService {
   #fetch(url: string): Observable<AppListResponse> {
     return this.#http.get<AppListResponse>(url).pipe(
       map((response) => AppListResponse.from(response)),
-      catchError((error) => {
-        console.error('Error loading apps list', error);
-
-        // todo handle errors
-
-        return of(new AppListResponse([]));
-      })
+      catchError((error) => this.#errorHandler.handleHttpError(error))
     );
   }
 

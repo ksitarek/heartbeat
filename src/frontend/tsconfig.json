@@ -24,6 +24,12 @@
       ],
       "@spartan-ng/ui-toggle-helm": [
         "./libs/ui/ui-toggle-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-sonner-helm": [
+        "./libs/ui/ui-sonner-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-icon-helm": [
+        "./libs/ui/ui-icon-helm/src/index.ts"
       ]
     }
   },
