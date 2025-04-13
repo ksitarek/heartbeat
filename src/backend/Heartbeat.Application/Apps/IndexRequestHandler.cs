@@ -1,21 +1,20 @@
-using Heartbeat.Database;
-using Heartbeat.Database.Read.Queries.Apps.ListApps;
+using Heartbeat.Database.Read.Queries.Apps.AppsListPage;
 using Microsoft.AspNetCore.Http;
 
 namespace Heartbeat.Application.Apps;
 
 public class IndexRequestHandler : IRequestHandler
 {
-    private readonly IListAppsQuery _listAppsQuery;
+    private readonly IAppsListPageQuery _appsListPageQuery;
 
-    public IndexRequestHandler(IListAppsQuery listAppsQuery)
+    public IndexRequestHandler(IAppsListPageQuery appsListPageQuery)
     {
-        _listAppsQuery = listAppsQuery;
+        _appsListPageQuery = appsListPageQuery;
     }
 
     public async Task<IResult> HandleAsync(CancellationToken cancellationToken)
     {
-        var result = await _listAppsQuery.ExecuteAsync(cancellationToken);
+        var result = await _appsListPageQuery.ExecuteAsync(cancellationToken);
 
         return Results.Ok(result);
     }

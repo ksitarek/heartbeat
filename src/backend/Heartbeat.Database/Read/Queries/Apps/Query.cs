@@ -1,3 +1,4 @@
+using Dapper;
 using Heartbeat.Database.Read.Connection;
 using Npgsql;
 
