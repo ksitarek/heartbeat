@@ -26,7 +26,7 @@ export class SidebarComponent {
   }
 
   public get sidebarClasses() {
-    return this.expandSidebar ? 'w-[210px] xl:w-[280px]' : 'w-[70px]';
+    return this.expandSidebar ? 'w-[210px] xl:w-[280px] px-8' : 'w-[70px]';
   }
 
   public toggleSidebar() {
