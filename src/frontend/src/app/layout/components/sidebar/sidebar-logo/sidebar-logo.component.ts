@@ -1,10 +1,11 @@
 import { NgClass } from '@angular/common';
 import { Component, inject } from '@angular/core';
+import { NgIcon } from '@ng-icons/core';
 import { SidebarService } from '../../../services/sidebar.service';
 
 @Component({
   selector: 'hb-sidebar-logo',
-  imports: [NgClass],
+  imports: [NgClass, NgIcon],
   templateUrl: './sidebar-logo.component.html',
   styleUrl: './sidebar-logo.component.scss',
 })

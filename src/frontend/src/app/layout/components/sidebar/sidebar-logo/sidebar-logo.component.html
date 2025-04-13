@@ -1,7 +1,11 @@
-<div [ngClass]="sidebarLogoClasses" class="flex items-center mx-4 mb-2 h-9">
-  <div class="flex items-center">
-    <h1 class="text-3xl text-nowrap">
-      🫀<span [ngClass]="expandSidebar ? '' : 'hidden'">hb^</span>
-    </h1>
+<div
+  [ngClass]="sidebarLogoClasses"
+  class="flex items-start justify-center mx-4 mb-2 text-red-600 dark:text-red-400 h-9"
+>
+  <div class="text-3xl">
+    <ng-icon name="lucideHeartPulse" />
+  </div>
+  <div [ngClass]="expandSidebar ? '' : 'hidden'" class="ml-3 text-2xl">
+    heartbeat
   </div>
 </div>
