@@ -15,29 +15,50 @@ export class AppsListService {
   #errorHandler = inject(ErrorHandlerService);
   #reload = signal(1);
 
-  #url = computed(
-    () =>
-      `${
-        this.#apiUrl
-      }/apps?currentPage=${this.currentPage()}&pageSize=${this.pageSize()}`
-  );
-
   #resource = rxResource({
     request: () => ({
       reload: this.#reload(),
-      url: this.#url(),
+      apiUrl: this.#apiUrl,
+      url: `${this.#apiUrl}/apps`,
+      currentPage: this.currentPage(),
+      pageSize: this.pageSize(),
+      sortBy: this.sortBy(),
+      sortOrder: this.sortOrder(),
     }),
     defaultValue: AppListResponse.empty(),
-    loader: ({ request }) => this.#fetch(request.url),
+    loader: ({ request }) =>
+      this.#fetch(
+        request.url,
+        request.currentPage,
+        request.pageSize,
+        request.sortBy,
+        request.sortOrder
+      ),
   });
 
   public readonly currentPage = signal(1);
 
   public readonly pageSize = signal(10);
 
+  public readonly sortBy = signal('AppLabel');
+
+  public readonly sortOrder = signal('asc');
+
   public readonly apps = computed(() => this.#resource.value().items ?? []);
 
-  #fetch(url: string): Observable<AppListResponse> {
+  #fetch(
+    baseUrl: string,
+    currentPage: number,
+    pageSize: number,
+    sortBy: string,
+    sortOrder: string
+  ): Observable<AppListResponse> {
+    const url =
+      `${baseUrl}?CurrentPage=${currentPage}` +
+      `&PageSize=${pageSize}` +
+      `&SortBy=${sortBy}` +
+      `&SortOrder=${sortOrder}`;
+
     return this.#http.get<AppListResponse>(url).pipe(
       map((response) => AppListResponse.from(response)),
       catchError((error) => this.#errorHandler.handleHttpError(error))

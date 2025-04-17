@@ -1,3 +1,96 @@
 <hb-page title="pages.applications.title">
-  <pre>{{ apps() | json }}</pre>
+  <brn-table
+    hlm
+    class="w-full"
+    [dataSource]="items()"
+    [displayedColumns]="dataTableColumns()"
+    [trackBy]="trackBy"
+  >
+    <brn-column-def name="appLabel" class="flex-1">
+      <hlm-th *brnHeaderDef>
+        <hb-data-table-column-header
+          class="w-full"
+          key="appLabel"
+          [(sortBy)]="sortBy"
+          [(sortOrder)]="sortOrder"
+        >
+          {{ "pages.applications.appLabel" | translate }}
+        </hb-data-table-column-header>
+      </hlm-th>
+      <hlm-td *brnCellDef="let element" truncate>
+        {{ element.appLabel }}
+      </hlm-td>
+    </brn-column-def>
+
+    <brn-column-def name="lastCheckStatus" class="w-48">
+      <hlm-th *brnHeaderDef>
+        <hb-data-table-column-header
+          class="w-full"
+          key="lastCheckStatus"
+          [(sortBy)]="sortBy"
+          [(sortOrder)]="sortOrder"
+        >
+          {{ "pages.applications.lastCheckStatus" | translate }}
+        </hb-data-table-column-header>
+      </hlm-th>
+      <hlm-td *brnCellDef="let element" truncate>
+        <hb-check-status [status]="element.lastCheckStatus" />
+      </hlm-td>
+    </brn-column-def>
+
+    <brn-column-def name="lastCheckDateTime" class="w-48"
+      >>
+      <hlm-th *brnHeaderDef>
+        <hb-data-table-column-header
+          class="w-full"
+          key="lastCheckDateTime"
+          [(sortBy)]="sortBy"
+          [(sortOrder)]="sortOrder"
+        >
+          {{ "pages.applications.lastCheckDateTime" | translate }}
+        </hb-data-table-column-header>
+      </hlm-th>
+      <hlm-td *brnCellDef="let element" truncate>
+        {{ element.lastCheckDateTime | date : dateFormats.dateTime }}
+      </hlm-td>
+    </brn-column-def>
+
+    <brn-column-def name="lastVerificationStatus" class="w-48">
+      <hlm-th *brnHeaderDef>
+        <hb-data-table-column-header
+          class="w-full"
+          key="lastVerificationStatus"
+          [(sortBy)]="sortBy"
+          [(sortOrder)]="sortOrder"
+        >
+          {{ "pages.applications.lastVerificationStatus" | translate }}
+        </hb-data-table-column-header>
+      </hlm-th>
+      <hlm-td *brnCellDef="let element" truncate>
+        <hb-verification-status [status]="element.lastVerificationStatus" />
+      </hlm-td>
+    </brn-column-def>
+
+    <brn-column-def name="lastVerificationDateTime" class="w-48">
+      <hlm-th *brnHeaderDef>
+        <hb-data-table-column-header
+          class="w-full"
+          key="lastVerificationDateTime"
+          [(sortBy)]="sortBy"
+          [(sortOrder)]="sortOrder"
+        >
+          {{ "pages.applications.lastVerificationDateTime" | translate }}
+        </hb-data-table-column-header>
+      </hlm-th>
+      <hlm-td *brnCellDef="let element" truncate>
+        {{ element.lastVerificationDateTime | date : dateFormats.dateTime }}
+      </hlm-td>
+    </brn-column-def>
+    <div
+      class="flex items-center justify-center p-20 text-muted-foreground"
+      brnNoDataRow
+    >
+      {{ "pages.applications.noData" | translate }}
+    </div>
+  </brn-table>
 </hb-page>

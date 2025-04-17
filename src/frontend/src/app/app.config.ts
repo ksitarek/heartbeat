@@ -53,3 +53,7 @@ export const appConfig: ApplicationConfig = {
     { provide: API_URL, useValue: environment.apiUrl },
   ],
 };
+
+export const dateFormats = {
+  dateTime: 'yyyy-MM-dd HH:mm:ss',
+};
