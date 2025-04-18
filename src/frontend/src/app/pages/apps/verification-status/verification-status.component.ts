@@ -1,16 +1,19 @@
-import { NgClass } from '@angular/common';
+import { DatePipe, NgClass } from '@angular/common';
 import { Component, computed, input } from '@angular/core';
 import { NgIcon } from '@ng-icons/core';
 import { TranslatePipe } from '@ngx-translate/core';
+import { dateFormats } from '../../../app.config';
 
 @Component({
   selector: 'hb-verification-status',
-  imports: [NgIcon, NgClass, TranslatePipe],
+  imports: [NgIcon, NgClass, TranslatePipe, DatePipe],
   templateUrl: './verification-status.component.html',
   styleUrl: './verification-status.component.scss',
 })
 export class VerificationStatusComponent {
   public readonly status = input.required<boolean>();
+  public readonly dateTime = input.required<Date>();
+  public readonly dateTimeFormat = dateFormats.dateTime;
 
   public readonly label = computed(() =>
     this.status()
@@ -23,8 +26,6 @@ export class VerificationStatusComponent {
   );
 
   public readonly classes = computed(() =>
-    this.status()
-      ? 'text-lime-600 dark:text-lime-500'
-      : 'text-rose-600 dark:text-rose-500'
+    this.status() ? 'success' : 'danger'
   );
 }

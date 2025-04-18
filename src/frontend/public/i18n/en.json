@@ -8,6 +8,7 @@
       "lastVerificationStatus": "Last verification status",
       "lastVerificationDateTime": "Last verification date/time",
       "noData": "No apps created yet.",
+      "loadMore": "Load more",
       "verification": {
         "verified": "Verified",
         "notVerified": "Not verified"

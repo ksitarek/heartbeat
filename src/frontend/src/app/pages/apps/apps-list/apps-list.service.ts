@@ -46,6 +46,10 @@ export class AppsListService {
 
   public readonly apps = computed(() => this.#resource.value().items ?? []);
 
+  public readonly totalCount = computed(
+    () => this.#resource.value().totalCount ?? 0
+  );
+
   #fetch(
     baseUrl: string,
     currentPage: number,

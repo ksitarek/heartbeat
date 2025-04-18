@@ -23,7 +23,8 @@
   --border: 240 5.9% 90%;
   --input: 240 5.9% 90%;
   --ring: 240 5.9% 10%;
-  --radius: 0.5rem;
+
+  --color-muted: var(--color-zinc-300);
   color-scheme: light;
 }
 
@@ -47,11 +48,38 @@
   --border: 240 3.7% 15.9%;
   --input: 240 3.7% 15.9%;
   --ring: 240 4.9% 83.9%;
+
+  --color-muted: var(--color-zinc-00);
   color-scheme: dark;
 }
 
 @layer base {
   * {
     @apply border-border;
+  }
+}
+
+.success {
+  @apply text-lime-600;
+
+  .dark &{
+    @apply text-lime-500;
+  }
+}
+
+.warning {
+  @apply text-orange-600;
+
+  .dark &{
+    @apply text-orange-500;
+  }
+}
+
+
+.danger {
+  @apply text-rose-600;
+
+  .dark &{
+    @apply text-rose-500;
   }
 }

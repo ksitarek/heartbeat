@@ -1,0 +1,27 @@
+<section hlmCard>
+  <header hlmCardHeader>
+    <h3 hlmCardTitle class="text-center">{{ label() }}</h3>
+  </header>
+
+  <div hlmCardContent>
+    @if(!lastVerificationStatus()){
+    <div>
+      <hb-verification-status
+        [status]="lastVerificationStatus()"
+        [dateTime]="lastVerificationDateTime()"
+      />
+    </div>
+    } @else {
+    <div>
+      <hb-check-status
+        [status]="lastCheckStatus()"
+        [dateTime]="lastCheckDateTime()"
+      />
+    </div>
+    }
+  </div>
+
+  <footer class="font-mono text-muted text-xs text-center mb-3">
+    {{ id() }}
+  </footer>
+</section>

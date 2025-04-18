@@ -1,3 +1,6 @@
-<div class="flex items-center w-full justify-center" [ngClass]="classes()">
-  <ng-icon [name]="icon()" class="mr-3" /> {{ label() | translate }}
+<div class="flex items-center justify-center flex-col" [ngClass]="classes()">
+  <p class="flex items-center justify-center">
+    <ng-icon [name]="icon()" class="mr-3" /> {{ label() | translate }}
+  </p>
+  <p class="text-xs">{{ dateTime() | date : dateTimeFormat }}</p>
 </div>
