@@ -4,14 +4,12 @@ import { NgIcon } from '@ng-icons/core';
 import { TranslatePipe } from '@ngx-translate/core';
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 import { SidebarService } from '../../services/sidebar.service';
-import { SidebarLogoComponent } from './sidebar-logo/sidebar-logo.component';
 import { SidebarMenuComponent } from './sidebar-menu/sidebar-menu.component';
 
 @Component({
   selector: 'hb-sidebar',
   imports: [
     NgClass,
-    SidebarLogoComponent,
     HlmButtonDirective,
     NgIcon,
     SidebarMenuComponent,

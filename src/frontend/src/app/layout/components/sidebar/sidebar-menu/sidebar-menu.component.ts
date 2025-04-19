@@ -18,10 +18,6 @@ export class SidebarMenuComponent {
     return this.#sidebarService.expandSidebar;
   }
 
-  public get menuClasses() {
-    return this.expandSidebar ? 'mt-8' : '';
-  }
-
   public readonly menuItems: SidebarMenuItem[] = [
     {
       title: 'layout.sidebar.dashboard',
