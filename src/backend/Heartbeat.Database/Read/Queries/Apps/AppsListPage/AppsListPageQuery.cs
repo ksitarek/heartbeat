@@ -9,15 +9,19 @@ internal class AppsListPageQuery : Query, IAppsListPageQuery
     {
     }
 
-    public async Task<ResultsPage<AppsListItem>> ExecuteAsync(int requestPageSize, long requestCurrentPage, CancellationToken cancellationToken)
+    public async Task<ResultsPage<AppsListItem>> ExecuteAsync(string search, int requestPageSize, long requestCurrentPage, CancellationToken cancellationToken)
     {
         var countSqlQuery = SqlQueryCache.Get("CountApps.sql");
         var pageSqlQuery = SqlQueryCache.Get("ListApps.sql");
 
-        var countSqlCmd = new CommandDefinition(countSqlQuery, cancellationToken: cancellationToken);
+        var countSqlCmd = new CommandDefinition(countSqlQuery, new
+        {
+            Search = search,
+        }, cancellationToken: cancellationToken);
 
         var pageSqlCmd = new CommandDefinition(pageSqlQuery, new
         {
+            Search = search,
             Limit = requestPageSize,
             Offset = (requestCurrentPage - 1) * requestPageSize
         }, cancellationToken: cancellationToken);

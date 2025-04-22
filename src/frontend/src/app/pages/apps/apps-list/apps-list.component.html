@@ -1,4 +1,12 @@
 <hb-page title="pages.applications.title">
+  <div class="flex flex-row justify-end mb-5">
+    <hb-search-input
+      class="w-80"
+      [ngModel]="search()"
+      (ngModelChange)="search.set($event)"
+    />
+  </div>
+
   <div class="grid grid-cols-4 gap-5">
     @for(app of items(); track app.appId){
     <hb-app-card [app]="app" />

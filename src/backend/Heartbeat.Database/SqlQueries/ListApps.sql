@@ -30,4 +30,9 @@ FROM "app" a
     LIMIT 1
     ) lv ON TRUE
 
+WHERE
+    (@Search IS NULL OR (
+        LOWER(a.label) LIKE LOWER(@Search) || '%'
+    ))
+
 LIMIT @Limit OFFSET @Offset

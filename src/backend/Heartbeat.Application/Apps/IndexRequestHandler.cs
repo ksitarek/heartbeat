@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace Heartbeat.Application.Apps;
 
-public record IndexRequest(int PageSize, long CurrentPage);
+public record IndexRequest(string Search, int PageSize, long CurrentPage);
 
 public class IndexRequestHandler : IRequestHandler
 {
@@ -16,8 +16,8 @@ public class IndexRequestHandler : IRequestHandler
 
     public async Task<IResult> HandleAsync(IndexRequest request, CancellationToken cancellationToken)
     {
-        var result = await _appsListPageQuery.ExecuteAsync(
-            request.PageSize,
+        var result = await _appsListPageQuery.ExecuteAsync(request.Search,
+                                                           request.PageSize,
             request.CurrentPage,
             cancellationToken);
 

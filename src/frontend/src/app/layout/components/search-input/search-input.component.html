@@ -1,0 +1,15 @@
+<div class="relative w-full">
+  <input
+    class="w-80 pl-10 w-full"
+    hlmInput
+    placeholder="Search"
+    type="text"
+    [ngModel]="value()"
+    (ngModelChange)="value.set($event)"
+  />
+
+  <ng-icon
+    name="lucideSearch"
+    class="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground"
+  />
+</div>

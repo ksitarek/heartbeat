@@ -1,4 +1,3 @@
-import { NgClass } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SidebarService } from '../../../services/sidebar.service';
@@ -7,7 +6,7 @@ import { SidebarMenuItem } from './sidebar-menu-item';
 
 @Component({
   selector: 'hb-sidebar-menu',
-  imports: [RouterModule, SidebarMenuItemComponent, NgClass],
+  imports: [RouterModule, SidebarMenuItemComponent],
   templateUrl: './sidebar-menu.component.html',
   styleUrl: './sidebar-menu.component.scss',
 })
