@@ -8,12 +8,12 @@
   </div>
 
   <div class="grid grid-cols-4 gap-5">
-    @for(app of items(); track app.appId){
+    @for(app of items$ | async; track app.appId){
     <hb-app-card [app]="app" />
     }
   </div>
 
-  @if(totalCount() > items().length){
+  @if(loadMoreVisible){
   <div class="flex justify-center mt-5">
     <button
       (click)="loadMore()"

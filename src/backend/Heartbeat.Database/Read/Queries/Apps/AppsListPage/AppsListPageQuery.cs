@@ -9,7 +9,7 @@ internal class AppsListPageQuery : Query, IAppsListPageQuery
     {
     }
 
-    public async Task<ResultsPage<AppsListItem>> ExecuteAsync(string search, int requestPageSize, long requestCurrentPage, CancellationToken cancellationToken)
+    public async Task<ResultsPage<AppsListItem>> ExecuteAsync(string? search, int requestPageSize, long requestCurrentPage, CancellationToken cancellationToken)
     {
         var countSqlQuery = SqlQueryCache.Get("CountApps.sql");
         var pageSqlQuery = SqlQueryCache.Get("ListApps.sql");

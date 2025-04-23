@@ -1,9 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { computed, inject, Injectable, signal } from '@angular/core';
-import { rxResource } from '@angular/core/rxjs-interop';
-import { catchError, map, Observable, of } from 'rxjs';
+import { inject, Injectable } from '@angular/core';
+import {
+  BehaviorSubject,
+  catchError,
+  debounceTime,
+  map,
+  switchMap,
+} from 'rxjs';
 import { API_URL } from '../../../app.config';
-import { debouncedSignal } from '../../../layout/services/debounced-signal';
 import { ErrorHandlerService } from '../../../layout/services/error-handler.service';
 import { AppListResponse } from './models/app-list-response';
 
@@ -12,9 +16,50 @@ import { AppListResponse } from './models/app-list-response';
 })
 export class AppsListService {
   #apiUrl = inject(API_URL);
+
   #http = inject(HttpClient);
+
   #errorHandler = inject(ErrorHandlerService);
-  #reload = signal(1);
+
+  #baseUrl = `${this.#apiUrl}/apps`;
+
+  #reload$ = new BehaviorSubject<null>(null);
+
+  #list$ = this.#reload$.pipe(
+    debounceTime(300),
+    map(() => {
+      let url =
+        `${this.#baseUrl}` +
+        `?CurrentPage=${this.currentPage}` +
+        `&PageSize=${this.pageSize}`;
+
+      if (this.search) {
+        url += `&Search=${encodeURIComponent(this.search)}`;
+      }
+
+      return url;
+    }),
+    switchMap((url) =>
+      this.#http.get<AppListResponse>(url).pipe(
+        map((response) => AppListResponse.from(response)),
+        catchError((error) => this.#errorHandler.handleHttpError(error))
+      )
+    )
+  );
+
+  public currentPage = 1;
+  public pageSize = 10;
+  public search: string | null = null;
+
+  public reload(): void {
+    this.#reload$.next(null);
+  }
+
+  public get list$() {
+    return this.#list$;
+  }
+
+  /*#reload = signal(1);
 
   #resource = rxResource({
     request: () => ({
@@ -89,5 +134,5 @@ export class AppsListService {
 
   public load() {
     this.#reload.update((value) => value * -1);
-  }
+  }*/
 }
