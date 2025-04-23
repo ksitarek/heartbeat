@@ -2,8 +2,8 @@ import { DatePipe, NgClass } from '@angular/common';
 import { Component, computed, input } from '@angular/core';
 import { NgIcon } from '@ng-icons/core';
 import { TranslatePipe } from '@ngx-translate/core';
-import { dateFormats } from '../../../app.config';
-import { AvailabilityStatus } from '../models/availability-status';
+import { dateFormats } from '../../../../app.config';
+import { AvailabilityStatus } from '../../models/availability-status';
 
 @Component({
   selector: 'hb-check-status',

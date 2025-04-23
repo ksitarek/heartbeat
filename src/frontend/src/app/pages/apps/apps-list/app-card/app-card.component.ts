@@ -1,12 +1,13 @@
 import { Component, computed, input } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import {
   HlmCardContentDirective,
   HlmCardDirective,
   HlmCardHeaderDirective,
   HlmCardTitleDirective,
 } from '@spartan-ng/ui-card-helm';
-import { CheckStatusComponent } from '../../check-status/check-status.component';
-import { VerificationStatusComponent } from '../../verification-status/verification-status.component';
+import { CheckStatusComponent } from '../../components/check-status/check-status.component';
+import { VerificationStatusComponent } from '../../components/verification-status/verification-status.component';
 import { AppListItem } from '../models/app-list-item';
 
 @Component({
@@ -18,6 +19,7 @@ import { AppListItem } from '../models/app-list-item';
     HlmCardContentDirective,
     VerificationStatusComponent,
     CheckStatusComponent,
+    RouterModule,
   ],
   templateUrl: './app-card.component.html',
   styleUrl: './app-card.component.scss',
