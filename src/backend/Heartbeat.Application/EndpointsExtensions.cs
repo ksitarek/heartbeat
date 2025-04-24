@@ -16,6 +16,11 @@ public static class EndpointsExtensions
                              CancellationToken cancellationToken)
             => handler.HandleAsync(new IndexRequest(search, pageSize, currentPage), cancellationToken));
 
+        app.MapGet("/apps/{id}", ([FromServices] GetAppDetailsRequestHandler handler,
+                             [FromRoute] Guid id,
+                             CancellationToken cancellationToken)
+            => handler.HandleAsync(new GetAppDetailsRequest(id), cancellationToken));
+
         return app;
     }
 }

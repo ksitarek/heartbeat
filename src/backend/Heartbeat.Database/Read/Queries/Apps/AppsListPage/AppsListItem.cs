@@ -10,3 +10,9 @@ public record AppsListItem(Guid AppId,
 
                            bool LastVerificationStatus,
                            DateTime LastVerificationDateTime);
+
+public record AppDetails
+{
+    public required Guid Id { get; init; }
+    public required string Label { get; init; }
+}

@@ -9,6 +9,7 @@ public static class RequestHandlerExtensions
 
     public static IServiceCollection AddRequestHandlers(this IServiceCollection services)
     {
-        return services.AddTransient<IndexRequestHandler>();
+        return services.AddTransient<IndexRequestHandler>()
+            .AddTransient<GetAppDetailsRequestHandler>();
     }
 }

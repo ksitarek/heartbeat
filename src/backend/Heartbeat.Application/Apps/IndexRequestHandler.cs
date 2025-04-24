@@ -5,7 +5,7 @@ namespace Heartbeat.Application.Apps;
 
 public record IndexRequest(string? Search, int PageSize, long CurrentPage);
 
-public class IndexRequestHandler : IRequestHandler
+public class IndexRequestHandler : IRequestHandler<IndexRequest>
 {
     private readonly IAppsListPageQuery _appsListPageQuery;
 
