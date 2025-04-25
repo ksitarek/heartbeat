@@ -2,11 +2,11 @@ import { Component, computed, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PageComponent } from '../../../layout/components/page/page.component';
 import { AppDetailsService } from './app-details.service';
-import { VerificationConfigurationComponent } from './verification-configuration/verification-configuration.component';
+import { VerificationStatusComponent } from './verification-status/verification-status.component';
 
 @Component({
   selector: 'hb-app-details',
-  imports: [PageComponent, VerificationConfigurationComponent],
+  imports: [PageComponent, VerificationStatusComponent],
   templateUrl: './app-details.component.html',
   styleUrl: './app-details.component.scss',
 })

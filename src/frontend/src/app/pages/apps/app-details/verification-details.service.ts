@@ -42,7 +42,6 @@ export class VerificationDetailsService {
     }
 
     const value = this.#details.value();
-    console.log('VerificationDetailsService.details', value);
 
     if (value === undefined) {
       return null;

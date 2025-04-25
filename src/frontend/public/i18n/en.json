@@ -17,6 +17,12 @@
         "up": "Up",
         "down": "Down",
         "unknown": "Unknown"
+      },
+      "details": {
+        "verification-details": {
+          "last-successful-verification": "Successfully verified on {{date}}",
+          "not-configured": "Application verification was not configured. Verification is required for the checks setup."
+        }
       }
     }
   },

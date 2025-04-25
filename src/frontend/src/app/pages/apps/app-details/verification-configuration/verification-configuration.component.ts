@@ -1,32 +1,12 @@
-import { Component, computed, effect, inject, input } from '@angular/core';
-import { VerificationDetailsService } from '../verification-details.service';
+import { Component, input } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'hb-verification-configuration',
-  imports: [],
+  imports: [TranslatePipe],
   templateUrl: './verification-configuration.component.html',
   styleUrl: './verification-configuration.component.scss',
 })
 export class VerificationConfigurationComponent {
   public appId = input.required<string>();
-
-  public readonly hasVerificationStatus = computed(() => {
-    console.log('hasVerificationStatus', this.#verificationDetails());
-    return this.#verificationDetails() !== null;
-  });
-
-  public readonly wasVerificationSuccessful = computed(() => {
-    return this.#verificationDetails()?.wasVerificationSuccessful ?? false;
-  });
-
-  readonly #verificationDetailsService = inject(VerificationDetailsService);
-  readonly #verificationDetails = this.#verificationDetailsService.details;
-
-  constructor() {
-    effect(() => {
-      if (!!this.appId()) {
-        this.#verificationDetailsService.appId.set(this.appId());
-      }
-    });
-  }
 }

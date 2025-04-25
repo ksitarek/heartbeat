@@ -5,7 +5,8 @@ export class VerificationStatus {
     public verificationStatusId: string,
     public verificationToken: string,
     public verificationStrategy: VerificationStrategy,
-    public wasVerificationSuccessful: boolean
+    public wasVerificationSuccessful: boolean,
+    public lastVerificationDateTime: Date | null = null
   ) {}
 
   public static from(data: VerificationStatus) {
@@ -14,7 +15,10 @@ export class VerificationStatus {
       data.verificationStatusId,
       data.verificationToken,
       data.verificationStrategy,
-      data.wasVerificationSuccessful
+      data.wasVerificationSuccessful,
+      data.lastVerificationDateTime
+        ? new Date(data.lastVerificationDateTime)
+        : null
     );
   }
 }
