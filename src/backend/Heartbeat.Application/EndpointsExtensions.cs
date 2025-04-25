@@ -1,4 +1,5 @@
 ﻿using Heartbeat.Application.Apps;
+using Heartbeat.Application.VerificationStatuses;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,9 +18,14 @@ public static class EndpointsExtensions
             => handler.HandleAsync(new IndexRequest(search, pageSize, currentPage), cancellationToken));
 
         app.MapGet("/apps/{id}", ([FromServices] GetAppDetailsRequestHandler handler,
-                             [FromRoute] Guid id,
-                             CancellationToken cancellationToken)
-            => handler.HandleAsync(new GetAppDetailsRequest(id), cancellationToken));
+                                  [FromRoute] Guid id,
+                                  CancellationToken cancellationToken)
+                       => handler.HandleAsync(new GetAppDetailsRequest(id), cancellationToken));
+
+        app.MapGet("/apps/{id}/verification-status", ([FromServices] GetVerificationStatusDetailsRequestHandler handler,
+                                  [FromRoute] Guid id,
+                                  CancellationToken cancellationToken)
+                       => handler.HandleAsync(new GetVerificationStatusDetailsRequest(id), cancellationToken));
 
         return app;
     }

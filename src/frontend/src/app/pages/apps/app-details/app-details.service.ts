@@ -33,5 +33,5 @@ export class AppDetailsService {
 }
 
 export class AppDetails {
-  public constructor(public label: string) {}
+  public constructor(public id: string, public label: string) {}
 }

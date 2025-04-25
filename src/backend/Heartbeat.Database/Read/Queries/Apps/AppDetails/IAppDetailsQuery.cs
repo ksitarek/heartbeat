@@ -1,6 +1,6 @@
-namespace Heartbeat.Database.Read.Queries.Apps.AppsListPage;
+namespace Heartbeat.Database.Read.Queries.Apps.AppDetails;
 
 public interface IAppDetailsQuery : IQuery
 {
-    Task<AppDetails?> ExecuteAsync(Guid id, CancellationToken cancellationToken);
+    Task<AppsListPage.AppDetails?> ExecuteAsync(Guid id, CancellationToken cancellationToken);
 }

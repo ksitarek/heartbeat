@@ -15,4 +15,6 @@ public class VerificationStatus
     public required VerificationStrategy VerificationStrategy { get; set; }
 
     public required bool WasVerificationSuccessful { get; set; }
+
+    public DateTimeOffset? LastVerificationDateTime { get; set; }
 }

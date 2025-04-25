@@ -32,5 +32,9 @@ public class VerificationStatusConfiguration : IEntityTypeConfiguration<Verifica
         builder.Property(e => e.WasVerificationSuccessful)
             .HasColumnName("was_verification_successful")
             .IsRequired();
+
+        builder.Property(e => e.LastVerificationDateTime)
+            .HasColumnName("last_verification_date_time")
+            .IsRequired(false);
     }
 }
