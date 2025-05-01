@@ -4,10 +4,7 @@ namespace Heartbeat.Verification.Logic.TokenStrategies;
 
 internal class GuidVerificationTokenStrategy : IVerificationTokenStrategy
 {
-    public string Version
-    {
-        get => "V1";
-    }
+    private const string Version = "V1";
 
     public VerificationToken GenerateVerificationToken(VerificationStrategy verificationStrategy)
     {
