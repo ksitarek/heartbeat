@@ -45,6 +45,9 @@
       ],
       "@spartan-ng/ui-formfield-helm": [
         "./libs/ui/ui-formfield-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-radiogroup-helm": [
+        "./libs/ui/ui-radiogroup-helm/src/index.ts"
       ]
     }
   },

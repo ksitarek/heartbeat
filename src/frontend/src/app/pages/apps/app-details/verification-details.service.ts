@@ -1,6 +1,16 @@
 import { HttpClient } from '@angular/common/http';
-import { computed, inject, Injectable, signal } from '@angular/core';
-import { rxResource } from '@angular/core/rxjs-interop';
+import { effect, inject, Injectable, signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import {
+  BehaviorSubject,
+  catchError,
+  combineLatest,
+  filter,
+  map,
+  Observable,
+  of,
+  switchMap,
+} from 'rxjs';
 import { API_URL } from '../../../app.config';
 import { ErrorHandlerService } from '../../../layout/services/error-handler.service';
 import { VerificationStatus } from '../models/verification-status';
@@ -9,44 +19,45 @@ import { VerificationStatus } from '../models/verification-status';
   providedIn: 'root',
 })
 export class VerificationDetailsService {
-  #apiUrl = inject(API_URL);
+  readonly #apiUrl = inject(API_URL);
+  readonly #http = inject(HttpClient);
+  readonly #errorHandler = inject(ErrorHandlerService);
 
-  #http = inject(HttpClient);
-
-  #errorHandler = inject(ErrorHandlerService);
-
-  #url = computed(() => {
-    if (this.appId() === null) {
-      return '';
-    }
-    return `${this.#apiUrl}/apps/${this.appId()}/verification-status`;
-  });
-
-  public readonly appId = signal<string | null>(null);
-
-  readonly #details = rxResource({
-    request: () => ({
-      appId: this.appId(),
+  readonly #reload$ = new BehaviorSubject(null);
+  readonly #appId$ = new BehaviorSubject<string | undefined>(undefined);
+  readonly #details$: Observable<VerificationStatus | null> = combineLatest([
+    this.#reload$,
+    this.#appId$,
+  ]).pipe(
+    filter(([_, appId]) => !!appId),
+    map(([_, appId]) => appId),
+    map((appId) => this.#getUrl(appId!)),
+    switchMap((url) => this.#http.get<VerificationStatus>(url)),
+    map((response) => {
+      return VerificationStatus.from(response);
     }),
+    catchError((error) => {
+      this.#errorHandler.handleHttpError(error);
+      return of(null);
+    })
+  );
 
-    loader: ({ request }) =>
-      this.#http.get<VerificationStatus>(
-        `${this.#apiUrl}/apps/${request.appId}/verification-status`
-      ),
-  });
+  public readonly appId = signal<string | undefined>(undefined);
+  public readonly details = toSignal(this.#details$);
 
-  public readonly details = computed(() => {
-    if (this.#details.error()) {
-      this.#errorHandler.handleHttpError(this.#details.error());
-      return null;
-    }
+  public constructor() {
+    effect(() => {
+      if (!!this.appId()) {
+        this.#appId$.next(this.appId());
+      }
+    });
+  }
 
-    const value = this.#details.value();
+  #getUrl(appId: string) {
+    return `${this.#apiUrl}/apps/${appId}/verification-status`;
+  }
 
-    if (value === undefined) {
-      return null;
-    }
-
-    return VerificationStatus.from(value!);
-  });
+  public load() {
+    this.#reload$.next(null);
+  }
 }

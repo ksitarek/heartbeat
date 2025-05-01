@@ -16,7 +16,6 @@ export class VerificationStatusComponent {
   public readonly dateFormat = dateFormats.dateTime;
 
   public readonly hasVerificationStatus = computed(() => {
-    console.log('hasVerificationStatus', this.#verificationDetails());
     return this.#verificationDetails() !== null;
   });
 
@@ -35,6 +34,7 @@ export class VerificationStatusComponent {
     effect(() => {
       if (!!this.appId()) {
         this.#verificationDetailsService.appId.set(this.appId());
+        this.#verificationDetailsService.load();
       }
     });
   }
