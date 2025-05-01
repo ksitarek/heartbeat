@@ -10,7 +10,7 @@ public class VerificationStatus
 
     public required DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
 
-    public required string? VerificationToken { get; set; }
+    public required string VerificationToken { get; set; }
 
     public required VerificationStrategy VerificationStrategy { get; set; }
 
