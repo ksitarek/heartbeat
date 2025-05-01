@@ -17,8 +17,4 @@
       <ProjectReference Include="..\Heartbeat.Domain\Heartbeat.Domain.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="TokenReadStrategies\" />
-    </ItemGroup>
-
 </Project>

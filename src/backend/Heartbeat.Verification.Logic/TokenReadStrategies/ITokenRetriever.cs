@@ -1,6 +1,6 @@
 using Heartbeat.Domain.Verification;
 
-namespace Heartbeat.Verification.Logic;
+namespace Heartbeat.Verification.Logic.TokenReadStrategies;
 
 public interface ITokenRetriever
 {

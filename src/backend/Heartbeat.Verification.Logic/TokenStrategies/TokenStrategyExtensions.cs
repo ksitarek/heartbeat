@@ -1,9 +1,7 @@
-using Heartbeat.Domain.Verification;
-using Heartbeat.Verification.Logic.TokenStrategies;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Heartbeat.Verification.Logic;
+namespace Heartbeat.Verification.Logic.TokenStrategies;
 
 public static class TokenStrategyExtensions
 {
@@ -16,6 +14,8 @@ public static class TokenStrategyExtensions
         services.AddSingleton(tokenStrategyConfiguration);
 
         services.AddSingleton<ITokenStrategyProvider, TokenStrategyProvider>();
+
+        services.AddSingleton<IKeyedStrategyProvider<IVerificationTokenStrategy>, KeyedStrategyProvider<IVerificationTokenStrategy>>();
 
         services.AddVerificationTokenStrategy<GuidVerificationTokenStrategy>("V1");
 
