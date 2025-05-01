@@ -1,14 +1,12 @@
 using Heartbeat.Domain.Verification;
-using Heartbeat.Verification.Logic.TokenStrategies;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace Heartbeat.Verification.Logic;
+namespace Heartbeat.Verification.Logic.TokenStrategies;
 
-public class TokenStrategyProvider : ITokenStrategyProvider
+internal class TokenStrategyProvider : ITokenStrategyProvider
 {
-    private readonly IServiceProvider _serviceProvider;
     private IVerificationTokenStrategy? _tokenStrategy;
     private readonly TokenStrategyConfiguration _configuration;
+    private readonly IKeyedStrategyProvider<IVerificationTokenStrategy> _strategyProvider;
 
     private IVerificationTokenStrategy? TokenStrategy
     {
@@ -17,17 +15,17 @@ public class TokenStrategyProvider : ITokenStrategyProvider
             if (_tokenStrategy == null)
             {
                 var key = TokenStrategyExtensions.GetVerificationTokenStrategyKey(_configuration.Version);
-                _tokenStrategy = _serviceProvider.GetKeyedService<IVerificationTokenStrategy>(key);
+                _tokenStrategy = _strategyProvider.Get(key);
             }
 
             return _tokenStrategy;
         }
     }
 
-    public TokenStrategyProvider(TokenStrategyConfiguration configuration, IServiceProvider serviceProvider)
+    public TokenStrategyProvider(TokenStrategyConfiguration configuration, IKeyedStrategyProvider<IVerificationTokenStrategy> strategyProvider)
     {
         _configuration = configuration;
-        _serviceProvider = serviceProvider;
+        _strategyProvider = strategyProvider;
     }
 
     public VerificationToken GenerateVerificationToken(VerificationStrategy verificationStrategy)

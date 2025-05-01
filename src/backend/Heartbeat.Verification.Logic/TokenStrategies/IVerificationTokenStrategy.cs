@@ -2,7 +2,7 @@ using Heartbeat.Domain.Verification;
 
 namespace Heartbeat.Verification.Logic.TokenStrategies;
 
-internal interface IVerificationTokenStrategy
+public interface IVerificationTokenStrategy
 {
     public VerificationToken GenerateVerificationToken(VerificationStrategy verificationStrategy);
 

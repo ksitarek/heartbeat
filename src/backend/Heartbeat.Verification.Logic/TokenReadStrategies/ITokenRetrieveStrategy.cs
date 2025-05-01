@@ -1,8 +1,8 @@
 using Heartbeat.Domain.Verification;
 
-namespace Heartbeat.Verification.Logic;
+namespace Heartbeat.Verification.Logic.TokenReadStrategies;
 
-internal interface ITokenRetrieveStrategy
+public interface ITokenRetrieveStrategy
 {
     Task<VerificationToken> RetrieveToken(string baseUrl, CancellationToken cancellationToken);
 }

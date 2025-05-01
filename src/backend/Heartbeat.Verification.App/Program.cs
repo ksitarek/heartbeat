@@ -1,5 +1,7 @@
 ﻿using Heartbeat.Domain.Verification;
 using Heartbeat.Verification.Logic;
+using Heartbeat.Verification.Logic.TokenReadStrategies;
+using Heartbeat.Verification.Logic.TokenStrategies;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

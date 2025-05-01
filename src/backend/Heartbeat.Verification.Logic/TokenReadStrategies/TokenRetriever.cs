@@ -1,22 +1,21 @@
 using Heartbeat.Domain.Verification;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace Heartbeat.Verification.Logic;
+namespace Heartbeat.Verification.Logic.TokenReadStrategies;
 
-public class TokenRetriever : ITokenRetriever
+internal class TokenRetriever : ITokenRetriever
 {
-    private readonly IServiceProvider _serviceProvider;
+    private readonly IKeyedStrategyProvider<ITokenRetrieveStrategy> _strategyProvider;
 
-    public TokenRetriever(IServiceProvider serviceProvider)
+    public TokenRetriever(IKeyedStrategyProvider<ITokenRetrieveStrategy> strategyProvider)
     {
-        _serviceProvider = serviceProvider;
+        _strategyProvider = strategyProvider;
     }
 
     public Task<VerificationToken> RetrieveToken(string baseUrl,
                                                  VerificationStrategy verificationStrategy,
                                                  CancellationToken cancellationToken)
     {
-        var retrieverStrategy = _serviceProvider.GetKeyedService<ITokenRetrieveStrategy>(
+        var retrieverStrategy = _strategyProvider.Get(
             TokenRetrieverExtensions.GetVerificationStrategyKey(verificationStrategy));
 
         if (retrieverStrategy == null)

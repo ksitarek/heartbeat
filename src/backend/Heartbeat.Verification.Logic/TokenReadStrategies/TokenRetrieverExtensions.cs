@@ -1,13 +1,15 @@
 using Heartbeat.Domain.Verification;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Heartbeat.Verification.Logic;
+namespace Heartbeat.Verification.Logic.TokenReadStrategies;
 
 public static class TokenRetrieverExtensions
 {
     public static IServiceCollection AddTokenRetriever(this IServiceCollection services)
     {
         services.AddSingleton<ITokenRetriever, TokenRetriever>();
+
+        services.AddSingleton<IKeyedStrategyProvider<ITokenRetrieveStrategy>, KeyedStrategyProvider<ITokenRetrieveStrategy>>();
 
         services.AddTokenRetrieveStrategy<DnsTokenRetriever>(VerificationStrategy.DnsRecord);
 

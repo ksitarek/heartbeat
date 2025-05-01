@@ -1,4 +1,4 @@
-namespace Heartbeat.Verification.Logic;
+namespace Heartbeat.Verification.Logic.TokenStrategies;
 
 public record TokenStrategyConfiguration
 {
