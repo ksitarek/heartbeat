@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace Heartbeat.Application.Apps;
 
-public record GetAppDetailsRequest(Guid Id);
 public class GetAppDetailsRequestHandler : IRequestHandler<GetAppDetailsRequest>
 {
     private readonly IAppDetailsQuery _appDetailsQuery;

@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Http;
 
 namespace Heartbeat.Application.VerificationStatuses;
 
-public record GetVerificationStatusDetailsRequest(Guid AppId);
-
 public class GetVerificationStatusDetailsRequestHandler : IRequestHandler<GetVerificationStatusDetailsRequest>
 {
     private readonly IGetVerificationStatusByAppIdQuery _getVerificationStatusByAppIdQuery;
