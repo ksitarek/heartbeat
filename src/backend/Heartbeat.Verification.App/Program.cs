@@ -31,11 +31,3 @@ using (var server = serviceProvider.GetRequiredService<BackgroundJobServer>())
     Console.WriteLine("Hangfire Server for Verification is started. Press any key to exit...");
     Console.ReadKey();
 }
-
-// var tokenRetriever = serviceProvider.GetRequiredService<ITokenRetriever>();
-//
-// var token = await tokenRetriever.RetrieveToken("krystiansitarek.pl",
-//                                                VerificationStrategy.DnsRecord,
-//                                                CancellationToken.None);
-//
-// Console.WriteLine(token);
