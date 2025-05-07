@@ -1,0 +1,2 @@
+INSERT INTO "verification_configuration" ("id", "app_id", "verification_token", "verification_strategy")
+VALUES ('27DFEBC6-CF1D-4ABA-8D62-3146E210F699', 'c1a1f750-dc71-4b4d-914d-afe308f640e5', '$hb.V1.2.0B6A45C5D67244F4BB76BE2E11929E53', 'DnsRecord');

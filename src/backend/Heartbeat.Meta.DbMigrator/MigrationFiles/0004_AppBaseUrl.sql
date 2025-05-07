@@ -1,1 +1,0 @@
-ALTER TABLE "app" ADD COLUMN "base_url" TEXT NOT NULL DEFAULT 'example.com';

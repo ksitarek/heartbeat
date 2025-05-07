@@ -1,4 +1,4 @@
-CREATE TYPE "verification_strategy" AS ENUM(
+CREATE TYPE "verification_strategy" AS ENUM (
     'FileUpload',
     'HttpHeader',
     'DnsRecord'
@@ -12,20 +12,32 @@ CREATE TYPE "availability_status" AS ENUM (
 
 CREATE TABLE "app"
 (
-    "id"    UUID PRIMARY KEY,
-    "label" TEXT NOT NULL
+    "id"       UUID PRIMARY KEY,
+    "label"    TEXT NOT NULL,
+    "base_url" TEXT NOT NULL DEFAULT 'example.com'
+);
+
+CREATE TABLE "verification_configuration"
+(
+    "id"                    UUID PRIMARY KEY,
+    "app_id"                UUID                    NOT NULL,
+    "verification_token"    TEXT,
+    "verification_strategy" "verification_strategy" NOT NULL,
+    CONSTRAINT "fk_verification_configuration_app" FOREIGN KEY ("app_id") REFERENCES "app" ("id") ON DELETE CASCADE
 );
 
 CREATE TABLE "verification_status"
 (
-    "id"                          UUID PRIMARY KEY,
-    "app_id"                      UUID                    NOT NULL,
-    "created_at"                  TIMESTAMPTZ             NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "verification_token"          TEXT,
-    "verification_strategy"       "verification_strategy" NOT NULL,
-    "was_verification_successful" BOOLEAN                 NOT NULL,
-    CONSTRAINT "fk_verification_status_app" FOREIGN KEY ("app_id") REFERENCES "app" ("id") ON DELETE CASCADE
+    "id"                            UUID PRIMARY KEY,
+    "verification_configuration_id" UUID                    NOT NULL,
+    "created_at"                    TIMESTAMPTZ             NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "verification_token"            TEXT,
+    "verification_strategy"         "verification_strategy" NOT NULL,
+    "last_verification_date_time"   TIMESTAMPTZ,
+    "was_verification_successful"   BOOLEAN                 NOT NULL,
+    CONSTRAINT "fk_verification_status_configuration" FOREIGN KEY ("verification_configuration_id") REFERENCES "verification_configuration" ("id") ON DELETE CASCADE
 );
+
 
 CREATE TABLE "check"
 (
@@ -46,7 +58,10 @@ CREATE TABLE "check_response"
 (
     "id"                 UUID PRIMARY KEY,
     "response_collected" BOOLEAN NOT NULL,
-    "response"           TEXT
+    "response"           TEXT,
+    "checksum"           TEXT    NOT NULL DEFAULT '',
+
+    CONSTRAINT "check_response_unique" UNIQUE ("checksum")
 );
 
 CREATE TABLE "check_status_log"

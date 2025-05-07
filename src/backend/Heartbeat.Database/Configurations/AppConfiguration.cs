@@ -19,16 +19,15 @@ public class AppConfiguration : IEntityTypeConfiguration<App>
             .HasColumnName("label")
             .IsRequired();
 
-        builder.HasMany(e => e.VerificationHistory)
-            .WithOne(v => v.App)
-            .HasForeignKey(v => v.AppId)
-            .HasConstraintName("fk_verification_status_app")
-            .OnDelete(DeleteBehavior.Cascade);
-
         builder.HasMany(e => e.Checks)
             .WithOne(c => c.App)
             .HasForeignKey(c => c.AppId)
             .HasConstraintName("fk_check_app")
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasOne(e => e.VerificationConfiguration)
+            .WithOne(c => c.App)
+            .HasConstraintName("fk_verification_configuration_app")
             .OnDelete(DeleteBehavior.Cascade);
     }
 }

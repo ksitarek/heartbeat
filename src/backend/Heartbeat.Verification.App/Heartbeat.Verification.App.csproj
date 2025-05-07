@@ -9,6 +9,7 @@
 
     <ItemGroup>
       <PackageReference Include="Hangfire.Core" Version="1.8.18" />
+      <PackageReference Include="Hangfire.PostgreSql" Version="1.20.12" />
       <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.4" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.4" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.4" />
@@ -20,6 +21,12 @@
 
     <ItemGroup>
       <Folder Include="HangfireServer\Jobs\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="appsettings.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

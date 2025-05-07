@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Heartbeat.Database.Configurations;
 
-public class VerificationStatusConfiguration : IEntityTypeConfiguration<VerificationStatus>
+public class VerificationConfigurationConfiguration : IEntityTypeConfiguration<VerificationConfiguration>
 {
-    public void Configure(EntityTypeBuilder<VerificationStatus> builder)
+    public void Configure(EntityTypeBuilder<VerificationConfiguration> builder)
     {
-        builder.ToTable("verification_status");
+        builder.ToTable("verification_configuration");
 
         builder.HasKey(e => e.Id);
 
@@ -16,12 +16,7 @@ public class VerificationStatusConfiguration : IEntityTypeConfiguration<Verifica
             .HasColumnName("id")
             .ValueGeneratedOnAdd();
 
-        builder.Property(e => e.VerificationConfigurationId)
-            .HasColumnName("verification_configuration_id");
-
-        builder.Property(e => e.CreatedAt)
-            .HasColumnName("created_at")
-            .IsRequired();
+        builder.Property(e => e.AppId).HasColumnName("app_id");
 
         builder.Property(e => e.VerificationToken)
             .HasConversion<string>(
@@ -34,8 +29,10 @@ public class VerificationStatusConfiguration : IEntityTypeConfiguration<Verifica
             .HasConversion<string>()
             .IsRequired();
 
-        builder.Property(e => e.WasVerificationSuccessful)
-            .HasColumnName("was_verification_successful")
-            .IsRequired();
+        builder.HasMany(e => e.VerificationHistory)
+            .WithOne(v => v.VerificationConfiguration)
+            .HasForeignKey(v => v.VerificationConfigurationId)
+            .HasConstraintName("fk_verification_configuration_app")
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

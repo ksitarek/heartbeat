@@ -9,9 +9,12 @@ public class App
 
     public required string Label { get; set; }
 
+
     public required string BaseUrl { get; set; }
 
-    public virtual ICollection<VerificationStatus> VerificationHistory { get; set; } = new List<VerificationStatus>();
+
+    public virtual VerificationConfiguration VerificationConfiguration { get; set; }
+
 
     public virtual ICollection<Check> Checks { get; set; } = new List<Check>();
 }

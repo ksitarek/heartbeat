@@ -1,5 +1,5 @@
 INSERT INTO "app" ("id", "label", "base_url")
-VALUES ('c1a1f750-dc71-4b4d-914d-afe308f640e5', 'Test App Alpha', 'krystiansitarek.pl'),
+VALUES ('c1a1f750-dc71-4b4d-914d-afe308f640e5', 'Test App Alpha', 'krystiansitarek.pl2'),
        ('b2f96c18-8f5d-4c02-bd58-1b5f0b7f4d51', 'SwiftBudget Tracker', 'example.com'),
        ('7f14e716-3b56-4b92-a2ab-935cf0378b9a', 'HealthSync', 'example.com'),
        ('f0d3a6b4-99e5-4b7c-9cfa-bf95d6b85b44', 'Daily Journal Pro', 'example.com'),

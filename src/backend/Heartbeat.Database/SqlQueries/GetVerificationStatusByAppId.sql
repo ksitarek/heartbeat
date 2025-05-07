@@ -1,9 +1,11 @@
 SELECT
     "vs"."id" as "Id",
-    "vs"."app_id" as "AppId",
+    "vc"."app_id" as "AppId",
+    "vc"."id" as "VerificationConfigurationId",
     "vs"."created_at" as "CreatedAt",
     "vs"."verification_token" as "VerificationToken",
     "vs"."was_verification_successful" as "WasVerificationSuccessful",
     "vs"."last_verification_date_time" as "LastVerificationDateTime"
 FROM "verification_status" as "vs"
-WHERE "vs"."app_id" = @AppId
+INNER JOIN "verification_configuration" as "vc" ON "vc"."id" = "vs"."verification_configuration_id"
+WHERE "vc"."app_id" = @AppId
