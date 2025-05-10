@@ -1,4 +1,5 @@
 import { inject, Injectable } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslateService } from '@ngx-translate/core';
 import { toast } from 'ngx-sonner';
 import { EMPTY, Observable } from 'rxjs';
@@ -17,11 +18,8 @@ export class ErrorHandlerService {
     console.error('An HTTP error occurred:', error);
 
     this.#translateService
-      .stream([
-        this.#errorHttpTitle,
-        this.#errorHttpDescription,
-        this.#errorHttpDismiss,
-      ])
+      .stream([this.#errorHttpTitle, this.#errorHttpDescription, this.#errorHttpDismiss])
+      .pipe(takeUntilDestroyed())
       .subscribe((translations) => {
         const title = translations[this.#errorHttpTitle];
         const description = translations[this.#errorHttpDescription];

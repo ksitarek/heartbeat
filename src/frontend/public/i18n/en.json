@@ -20,8 +20,11 @@
       },
       "details": {
         "verification-details": {
+          "title": "Verification details",
           "last-successful-verification": "Successfully verified on {{date}}",
-          "not-configured": "Application verification was not configured. Verification is required for the checks setup."
+          "not-configured": "Application verification is not configured. Verification is required for the checks setup.",
+          "not-verified-yet": "Application verification is scheduled and it should be conducted within few minutes.",
+          "verification-failed": "Last verification failed on {{date}}"
         }
       }
     }
@@ -43,6 +46,8 @@
       "dark": "Dark",
       "light": "Light",
       "system": "System"
-    }
+    },
+    "copy-to-clipboard": "Copy to clipboard",
+    "copied-to-clipboard": "Copied to clipboard"
   }
 }

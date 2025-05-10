@@ -1,3 +1,16 @@
 <hb-page [title]="appLabel()">
-  <hb-verification-status [appId]="appId()" />
+  @if (!wasLastVerificationSuccessful()) {
+    <p class="warning text-center">
+      @if (!isVerificationConfigured()) {
+        {{ "pages.applications.details.verification-details.not-configured" | translate }}
+      } @else if (!wasVerifiedAtLeastOnce()) {
+        {{ "pages.applications.details.verification-details.not-verified-yet" | translate }}
+      } @else {
+        {{ "pages.applications.details.verification-details.verification-failed" | translate }}
+      }
+    </p>
+  }
+
+  <hb-h2>{{ "pages.applications.details.verification-details.title" | translate }}</hb-h2>
+  <hb-verification-configuration [verificationConfiguration]="verificationConfiguration()" />
 </hb-page>

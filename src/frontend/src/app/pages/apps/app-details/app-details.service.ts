@@ -2,6 +2,7 @@ import { httpResource } from '@angular/common/http';
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { API_URL } from '../../../app.config';
 import { ErrorHandlerService } from '../../../layout/services/error-handler.service';
+import { VerificationStrategy } from '../models/verification-strategy';
 
 @Injectable({
   providedIn: 'root',
@@ -11,20 +12,11 @@ export class AppDetailsService {
 
   #errorHandler = inject(ErrorHandlerService);
 
-  public readonly id = signal<number | null>(null);
+  public readonly id = signal<number | undefined>(undefined);
 
-  readonly #baseUrl = computed(() => `${this.#apiUrl}/apps/${this.id()}`);
-
-  readonly #details = httpResource<AppDetails>(() => ({
-    url: this.#baseUrl(),
-    method: 'GET',
-  }));
+  readonly #details = httpResource<AppDetails>(() => `${this.#apiUrl}/apps/${this.id()}`);
 
   public readonly details = computed(() => {
-    if (this.id() === null) {
-      return null;
-    }
-
     if (this.#details.error()) {
       this.#errorHandler.handleHttpError(this.#details.error());
     }
@@ -33,5 +25,13 @@ export class AppDetailsService {
 }
 
 export class AppDetails {
-  public constructor(public id: string, public label: string) {}
+  public constructor(
+    public id: string,
+    public label: string,
+    public lastVerificationDate: Date | null,
+    public lastVerificationStatus: boolean | null,
+    public verificationConfigurationId: string | null,
+    public verificationStrategy: VerificationStrategy | null,
+    public verificationToken: string | null,
+  ) {}
 }

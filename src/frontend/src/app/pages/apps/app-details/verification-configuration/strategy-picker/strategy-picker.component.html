@@ -1,0 +1,13 @@
+<hlm-radio-group class="grid grid-cols-3 gap-4 justify-items-center-safe" [ngModel]="verificationStrategy()" (ngModelChange)="setStrategy($event)">
+  @for (strategy of strategies; track strategy) {
+    <label
+      class="flex items-center block space-x-0 relative flex flex-col items-center justify-center py-8 px-4 rounded-lg border-2 border-border w-50 bg-background hover:bg-accent/20 cursor-pointer transition-colors [&>span]:mt-4 [&:has([data-checked=true])]:border-2 [&:has([data-checked=true])]:font-bold [&:has([data-checked=true])]:bg-accent/50"
+      hlmLabel
+    >
+      <hlm-radio [value]="strategy.value">
+        <ng-icon hlm [name]="strategy.icon" class="mb-3 text-3xl" />
+      </hlm-radio>
+      {{ strategy.label }}
+    </label>
+  }
+</hlm-radio-group>

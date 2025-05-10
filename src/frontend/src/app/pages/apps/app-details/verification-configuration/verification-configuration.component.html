@@ -1,25 +1,8 @@
-<p>
-  {{
-    "pages.applications.details.verification-details.not-configured" | translate
-  }}
-</p>
+<hb-strategy-picker
+  [verificationStrategy]="verificationConfiguration().verificationStrategy"
+  (verificationStrategyChange)="updateVerificationStrategy($event!)"
+/>
 
-<form [formGroup]="form">
-  <hlm-radio-group
-    class="grid grid-cols-3 gap-4"
-    formControlName="verificationStrategy"
-  >
-    <hlm-radio value="card">
-      <ng-icon hlm name="lucideCreditCard" class="mb-3" />
-      Card
-    </hlm-radio>
-    <hlm-radio value="paypal">
-      <ng-icon hlm name="lucideCreditCard" class="mb-3" />
-      PayPal
-    </hlm-radio>
-    <hlm-radio value="apple">
-      <ng-icon hlm name="lucideCreditCard" class="mb-3" />
-      Apple
-    </hlm-radio>
-  </hlm-radio-group>
-</form>
+@if (token()) {
+  <hb-token-field [token]="token()" />
+}
