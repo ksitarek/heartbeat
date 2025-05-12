@@ -1,1 +1,7 @@
-<h2 class="text-3xl font-bold mb-5">{{ title() | translate }}</h2>
+<h2 class="text-3xl font-bold mb-5">
+  @if (translateTitle()) {
+    {{ title() | translate }}
+  } @else {
+    {{ title() }}
+  }
+</h2>

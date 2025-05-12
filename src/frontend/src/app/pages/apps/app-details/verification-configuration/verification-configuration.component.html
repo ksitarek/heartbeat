@@ -3,6 +3,8 @@
   (verificationStrategyChange)="updateVerificationStrategy($event!)"
 />
 
+{{ verificationConfiguration() | json }}
+
 @if (token()) {
   <hb-token-field [token]="token()" />
 }

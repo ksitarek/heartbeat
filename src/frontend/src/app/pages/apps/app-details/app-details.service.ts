@@ -22,6 +22,8 @@ export class AppDetailsService {
     }
     return this.#details.value();
   });
+
+  public readonly isLoaded = computed(() => this.id() === this.#details.value()?.id);
 }
 
 export class AppDetails {

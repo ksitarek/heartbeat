@@ -1,4 +1,4 @@
-import { Component, effect, model } from '@angular/core';
+import { Component, model } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgIcon } from '@ng-icons/core';
 import { HlmRadioComponent, HlmRadioGroupComponent } from '@spartan-ng/ui-radiogroup-helm';
@@ -30,12 +30,6 @@ export class StrategyPickerComponent {
       icon: 'lucideGlobe',
     },
   ];
-
-  public constructor() {
-    effect(() => {
-      console.log('Selected strategy:', this.verificationStrategy());
-    });
-  }
 
   public setStrategy(strategy: VerificationStrategy): void {
     this.verificationStrategy.set(strategy);

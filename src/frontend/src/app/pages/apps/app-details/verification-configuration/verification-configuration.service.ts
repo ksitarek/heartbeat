@@ -10,16 +10,12 @@ export class VerificationConfigurationService {
 
 export class VerificationConfiguration {
   public constructor(
-    public id: string,
-    public verificationStrategy: VerificationStrategy,
-    public verificationToken: string
+    public id: string | undefined,
+    public verificationStrategy: VerificationStrategy | undefined,
+    public verificationToken: string | undefined,
   ) {}
 
   public static empty() {
-    return new VerificationConfiguration(
-      '',
-      VerificationStrategy.FileUpload,
-      ''
-    );
+    return new VerificationConfiguration(undefined, undefined, undefined);
   }
 }

@@ -1,5 +1,5 @@
-import { Component, computed, model } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { JsonPipe } from '@angular/common';
+import { Component, computed, effect, model } from '@angular/core';
 import { VerificationStrategy } from '../../models/verification-strategy';
 import { StrategyPickerComponent } from './strategy-picker/strategy-picker.component';
 import { TokenFieldComponent } from './token-field/token-field.component';
@@ -7,7 +7,7 @@ import { VerificationConfiguration } from './verification-configuration.service'
 
 @Component({
   selector: 'hb-verification-configuration',
-  imports: [ReactiveFormsModule, StrategyPickerComponent, TokenFieldComponent],
+  imports: [StrategyPickerComponent, TokenFieldComponent, JsonPipe],
   templateUrl: './verification-configuration.component.html',
   styleUrl: './verification-configuration.component.scss',
 })
@@ -16,7 +16,15 @@ export class VerificationConfigurationComponent {
 
   readonly token = computed(() => this.verificationConfiguration()?.verificationToken ?? '');
 
-  readonly strategy = computed(() => this.verificationConfiguration()?.verificationStrategy ?? '');
+  // readonly strategy = computed(() => this.verificationConfiguration()?.verificationStrategy ?? '');
+
+  public constructor() {
+    effect(() => {
+      const configuration = this.verificationConfiguration();
+
+      console.log('Update configuration', configuration);
+    });
+  }
 
   public updateVerificationStrategy(strategy: VerificationStrategy): void {
     this.verificationConfiguration.update((v) => ({

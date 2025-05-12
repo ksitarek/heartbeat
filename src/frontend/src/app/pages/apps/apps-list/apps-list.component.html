@@ -1,28 +1,19 @@
-<hb-page title="pages.applications.title">
+<hb-page title="pages.applications.title" [translateTitle]="true">
   <div class="flex flex-row justify-end mb-5">
-    <hb-search-input
-      class="w-80"
-      [ngModel]="search()"
-      (ngModelChange)="search.set($event)"
-    />
+    <hb-search-input class="w-80" [ngModel]="search()" (ngModelChange)="search.set($event)" />
   </div>
 
   <div class="grid grid-cols-4 gap-5">
-    @for(app of items$ | async; track app.appId){
-    <hb-app-card [app]="app" />
+    @for (app of items$ | async; track app.appId) {
+      <hb-app-card [app]="app" />
     }
   </div>
 
-  @if(loadMoreVisible){
-  <div class="flex justify-center mt-5">
-    <button
-      (click)="loadMore()"
-      hlmBtn
-      variant="secondary"
-      class="cursor-pointer"
-    >
-      {{ "pages.applications.loadMore" | translate }}
-    </button>
-  </div>
+  @if (loadMoreVisible) {
+    <div class="flex justify-center mt-5">
+      <button (click)="loadMore()" hlmBtn variant="secondary" class="cursor-pointer">
+        {{ "pages.applications.loadMore" | translate }}
+      </button>
+    </div>
   }
 </hb-page>

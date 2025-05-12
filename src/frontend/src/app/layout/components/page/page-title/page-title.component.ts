@@ -9,4 +9,5 @@ import { TranslatePipe } from '@ngx-translate/core';
 })
 export class PageTitleComponent {
   readonly title = input.required<string>();
+  readonly translateTitle = input.required<boolean>();
 }

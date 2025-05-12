@@ -33,6 +33,8 @@ export class AppDetailsComponent {
       .subscribe();
   }
 
+  public readonly isLoaded = this.#appDetailsService.isLoaded;
+
   public readonly appId = computed(() => this.#appDetailsService.details()?.id ?? '');
 
   public readonly appLabel = computed(() => this.#appDetailsService.details()?.label ?? '');
