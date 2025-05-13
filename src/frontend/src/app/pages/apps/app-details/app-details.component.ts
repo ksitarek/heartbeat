@@ -1,7 +1,9 @@
 import { Component, computed, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
+import { NgIcon } from '@ng-icons/core';
 import { TranslatePipe } from '@ngx-translate/core';
+import { BrnCollapsibleComponent, BrnCollapsibleContentComponent, BrnCollapsibleTriggerDirective } from '@spartan-ng/brain/collapsible';
 import { tap } from 'rxjs';
 import { PageComponent } from '../../../layout/components/page/page.component';
 import { H2Component } from '../../../layout/components/typography/h2/h2.component';
@@ -11,7 +13,16 @@ import { VerificationConfiguration } from './verification-configuration/verifica
 
 @Component({
   selector: 'hb-app-details',
-  imports: [PageComponent, VerificationConfigurationComponent, TranslatePipe, H2Component],
+  imports: [
+    PageComponent,
+    VerificationConfigurationComponent,
+    TranslatePipe,
+    H2Component,
+    BrnCollapsibleComponent,
+    BrnCollapsibleTriggerDirective,
+    BrnCollapsibleContentComponent,
+    NgIcon,
+  ],
   templateUrl: './app-details.component.html',
   styleUrl: './app-details.component.scss',
 })
@@ -57,5 +68,9 @@ export class AppDetailsComponent {
     }
 
     return VerificationConfiguration.empty();
+  });
+
+  public readonly autoExpandVerificationConfiguration = computed(() => {
+    return !this.wasLastVerificationSuccessful();
   });
 }

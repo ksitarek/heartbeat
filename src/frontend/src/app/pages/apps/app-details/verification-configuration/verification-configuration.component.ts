@@ -1,4 +1,3 @@
-import { JsonPipe } from '@angular/common';
 import { Component, computed, effect, model } from '@angular/core';
 import { VerificationStrategy } from '../../models/verification-strategy';
 import { StrategyPickerComponent } from './strategy-picker/strategy-picker.component';
@@ -7,7 +6,7 @@ import { VerificationConfiguration } from './verification-configuration.service'
 
 @Component({
   selector: 'hb-verification-configuration',
-  imports: [StrategyPickerComponent, TokenFieldComponent, JsonPipe],
+  imports: [StrategyPickerComponent, TokenFieldComponent],
   templateUrl: './verification-configuration.component.html',
   styleUrl: './verification-configuration.component.scss',
 })
@@ -15,8 +14,6 @@ export class VerificationConfigurationComponent {
   public verificationConfiguration = model.required<VerificationConfiguration>();
 
   readonly token = computed(() => this.verificationConfiguration()?.verificationToken ?? '');
-
-  // readonly strategy = computed(() => this.verificationConfiguration()?.verificationStrategy ?? '');
 
   public constructor() {
     effect(() => {

@@ -12,8 +12,15 @@
       </p>
     }
 
-    <brn-collapsible>
-      <hb-h2 brnCollapsibleTrigger>{{ "pages.applications.details.verification-details.title" | translate }}</hb-h2>
+    <brn-collapsible [expanded]="autoExpandVerificationConfiguration()" class="group">
+      <button brnCollapsibleTrigger class="cursor-pointer">
+        <hb-h2>
+          <ng-icon name="lucideChevronUp" class="group-data-[state=closed]:hidden mr-3" />
+          <ng-icon name="lucideChevronDown" class="group-data-[state=open]:hidden mr-3" />{{
+            "pages.applications.details.verification-details.title" | translate
+          }}</hb-h2
+        >
+      </button>
 
       <brn-collapsible-content>
         <hb-verification-configuration [verificationConfiguration]="verificationConfiguration()" />

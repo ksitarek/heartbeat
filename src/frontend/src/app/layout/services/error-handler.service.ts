@@ -14,26 +14,27 @@ export class ErrorHandlerService {
   readonly #errorHttpDescription = 'errorHandler.http.description';
   readonly #errorHttpDismiss = 'errorHandler.http.dismiss';
 
+  readonly #errorHandlerPipe$ = this.#translateService
+    .stream([this.#errorHttpTitle, this.#errorHttpDescription, this.#errorHttpDismiss])
+    .pipe(takeUntilDestroyed());
+
   public handleHttpError(error: unknown): Observable<never> {
     console.error('An HTTP error occurred:', error);
 
-    this.#translateService
-      .stream([this.#errorHttpTitle, this.#errorHttpDescription, this.#errorHttpDismiss])
-      .pipe(takeUntilDestroyed())
-      .subscribe((translations) => {
-        const title = translations[this.#errorHttpTitle];
-        const description = translations[this.#errorHttpDescription];
-        const dismiss = translations[this.#errorHttpDismiss];
+    this.#errorHandlerPipe$.subscribe((translations) => {
+      const title = translations[this.#errorHttpTitle];
+      const description = translations[this.#errorHttpDescription];
+      const dismiss = translations[this.#errorHttpDismiss];
 
-        toast.error(title, {
-          description: description,
-          duration: 5000,
-          action: {
-            label: dismiss,
-            onClick: () => {},
-          },
-        });
+      toast.error(title, {
+        description: description,
+        duration: 5000,
+        action: {
+          label: dismiss,
+          onClick: () => {},
+        },
       });
+    });
 
     return EMPTY;
   }
