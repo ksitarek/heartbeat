@@ -7,6 +7,7 @@ import { BrnCollapsibleComponent, BrnCollapsibleContentComponent, BrnCollapsible
 import { tap } from 'rxjs';
 import { PageComponent } from '../../../layout/components/page/page.component';
 import { H2Component } from '../../../layout/components/typography/h2/h2.component';
+import { WarningBoxComponent } from '../../../layout/components/warning-box/warning-box.component';
 import { AppDetailsService } from './app-details.service';
 import { VerificationConfigurationComponent } from './verification-configuration/verification-configuration.component';
 import { VerificationConfiguration } from './verification-configuration/verification-configuration.service';
@@ -22,6 +23,7 @@ import { VerificationConfiguration } from './verification-configuration/verifica
     BrnCollapsibleTriggerDirective,
     BrnCollapsibleContentComponent,
     NgIcon,
+    WarningBoxComponent,
   ],
   templateUrl: './app-details.component.html',
   styleUrl: './app-details.component.scss',

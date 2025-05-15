@@ -1,7 +1,7 @@
 <hb-page [title]="appLabel()">
   @if (isLoaded()) {
     @if (!wasLastVerificationSuccessful()) {
-      <p class="warning text-center">
+      <hb-warning-box>
         @if (!isVerificationConfigured()) {
           {{ "pages.applications.details.verification-details.not-configured" | translate }}
         } @else if (!wasVerifiedAtLeastOnce()) {
@@ -9,7 +9,7 @@
         } @else {
           {{ "pages.applications.details.verification-details.verification-failed" | translate }}
         }
-      </p>
+      </hb-warning-box>
     }
 
     <brn-collapsible [expanded]="autoExpandVerificationConfiguration()" class="group">
