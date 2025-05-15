@@ -1,4 +1,4 @@
-<hb-page title="pages.applications.title" [translateTitle]="true">
+<hb-page [title]="'pages.applications.title' | translate">
   <div class="flex flex-row justify-end mb-5">
     <hb-search-input class="w-80" [ngModel]="search()" (ngModelChange)="search.set($event)" />
   </div>

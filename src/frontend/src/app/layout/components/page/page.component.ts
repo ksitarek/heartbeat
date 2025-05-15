@@ -9,5 +9,4 @@ import { PageTitleComponent } from './page-title/page-title.component';
 })
 export class PageComponent {
   readonly title = input.required<string>();
-  readonly translateTitle = input.required<boolean>();
 }
